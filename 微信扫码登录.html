@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>微信登录功能</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script src="http://www.xueersi.com/lib/jQuery/1.11.1/jquery.min.js?1458897912"></script>
+</head>
+<body> 
+ <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx6b26b7c75e8f3e5a&redirect_uri=http%3A%2F%2Fwww.imooc.com%2Fpassport%2Fuser%2Ftpcallback%3Freferer%3Dhttp%3A%2F%2Fwww.imooc.com%26tp%3Dweixin%26bind%3D0&response_type=code&scope=snsapi_login#wechat_redirect">慕课网微信登录功能</a>
+ <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxadfc3188c82ef252&redirect_uri=http%3A%2F%2Fpassport.jikexueyuan.com%2Fconnect%2Fsuccess%3Ft%3Dweixin&response_type=code&scope=snsapi_login&t=weixin&state=weixin#wechat_redirect">极客学院微信登录功能</a>
+ <button id="LoginBtn">测试微信登录功能</button>
+ <div id="WXBox"></div>
+</body> 
+</html>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+
+<script type="text/javascript">
+//js微信登录功能可以直接将所有配置写在a标签的额href链接中也可以写在js配置中
+ $('#LoginBtn').click(function(){
+   var obj =   new WxLogin({
+      id:"WXBox", //第三方页面显示二维码的容器id
+      appid: "wxadfc3188c82ef252", //应用唯一标识，在微信开放平台提交应用审核通过后获得
+      scope: "snsapi_login", //应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可
+      redirect_uri: "http%3A%2F%2Fpassport.jikexueyuan.com%2Fconnect%2Fsuccess%3Ft%3Dweixin",//重定向地址，需要进行UrlEncode
+      state: "weixin#wechat_redirect"//用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
+    });
+ })
+</script>
+
